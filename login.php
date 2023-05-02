@@ -19,7 +19,7 @@
                     <h1 class="mb-3 font-monospace">L O G I N</h1>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                     </div>
-                    <form class="d-flex flex-column w-75" method="POST">
+                    <form class="d-flex flex-column w-75" action="./config/Process.php" method="POST">
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="FirstName" class="form-label">Email</label>
@@ -32,16 +32,9 @@
                         </div>
                         <div class="row">
                             <div class="col d-grid">
-                                <button type="submit" name="submit" class="btn btn-dark py-2 text-uppercase font-monospace">Login</button>
+                                <button type="submit" name="submitLogin" class="btn btn-dark py-2 text-uppercase font-monospace">Login</button>
                             </div>
                         </div>
-                        <?php
-                        if (isset($_POST['submit'])) {
-                            include_once("./config/Process.php");
-                            $connect = new Functions();
-                            $connect->Login();
-                        }
-                        ?>
                     </form>
                 </div>
             </div>

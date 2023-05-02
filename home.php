@@ -14,7 +14,7 @@
 <body class="bg-body-tertiary">
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar navbar-expand-lg bg-body-secondary bg-opacity-25 position-fixed" id="navigation">
+            <nav class="navbar navbar-expand-lg bg-opacity-100 position-fixed" id="navigation">
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="25" height="25" fill="currentColor" class="bi bi-house-heart-fill" viewBox="0 0 16 16">
@@ -52,16 +52,15 @@
                             <div class="p-1">
                                 <a class="btn btn-dark p-2" href="./pages/list-child.php">List of Childrens</a>
                             </div>
-                            <div class="p-1">
+                            <!-- <div class="p-1">
                                 <a class="btn btn-dark p-2" href="./pages/update-child.php">Update Children info.</a>
                             </div>
                             <div class="p-1">
                                 <a class="btn btn-dark p-2" href="./pages/delete-child.php">Delete Children info.</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

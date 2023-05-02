@@ -9,7 +9,6 @@ class DatabaseProcess extends DatabasePDO
     private $user;
     private $pass;
 
-    // Variables for Create/Update/Delete
     private $id;
     private $firstname;
     private $lastname;
@@ -18,6 +17,9 @@ class DatabaseProcess extends DatabasePDO
     private $birthdate;
     private $disease;
     private $gender;
+
+    // Variables for Update
+    private $childrenId;
 
     public function getAll()
     {
@@ -92,8 +94,8 @@ class DatabaseProcess extends DatabasePDO
 
             //Preparamos la consulta sql
             $stmt = $cnn->prepare(
-                "INSERT INTO children (name_children, lastname_children, blood_type, age, birthdate, disease, gender)
-                 VALUES(:FirstName, :LastName, :BloodType, :Age, :Birthdate, :Disease, :Gender)"
+                "INSERT INTO children (id_children, name_children, lastname_children, blood_type, age, birthdate, disease, gender)
+                 VALUES(null, :FirstName, :LastName, :BloodType, :Age, :Birthdate, :Disease, :Gender)"
             );
             $stmt->bindParam("FirstName", $this->firstname, PDO::PARAM_STR);
             $stmt->bindParam("LastName", $this->lastname, PDO::PARAM_STR);
@@ -133,8 +135,7 @@ class DatabaseProcess extends DatabasePDO
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        for ($i = 0; $i<=count($childrens)-1; $i++)
-        {
+        for ($i = 0; $i < count($childrens); $i++) {
             echo "<tr>
             <th scope='row'>" . $childrens[$i]['id_children'] . "</th>
             <td>" . $childrens[$i]['name_children'] . "</td>
@@ -143,8 +144,41 @@ class DatabaseProcess extends DatabasePDO
             <td>" . $childrens[$i]['blood_type'] . "</td>
             <td>" . $childrens[$i]['age'] . "</td>
             <td>" . $childrens[$i]['birthdate'] . "</td>
-            <td>" . $childrens[$i]['disease'] . "</td>
-            </tr>";
+            <td>" . $childrens[$i]['disease'] . "</td>" .
+                "<td class='py-2 px-1'> <button type='submit' name='editChildren$i' class='btn btn-success'><i class='bi bi-pencil'></i></button> </td>" .
+                "<td class='py-2 px-1'> <button type='submit' name='deleteChildren$i' class='btn btn-danger'><i class='bi bi-trash'></i></button> </td>" .
+                "</tr>";
+        }
+    }
+
+    function getIdChildren($v1)
+    {
+        try {
+            $this->childrenId = $v1;
+
+            $cnn = $this->conn();
+
+            //Preparamos la consulta sql
+            $respuesta = $cnn->prepare("SELECT * FROM children WHERE id_children=:idChildren;");
+            $respuesta->bindParam("idChildren", $this->childrenId, PDO::PARAM_STR);
+            //Ejecutamos la consulta
+            $respuesta->execute();
+            $children = [];
+            foreach ($respuesta as $res) {
+                $children[] = $res;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        for ($i = 0; $i <= count($children) - 1; $i++) {
+            // echo $children[$i]['id_children'] . "<br/>";
+            // echo $children[$i]['name_children'] . "<br/>";
+            // echo $children[$i]['lastname_children'] . "<br/>";
+            // echo $children[$i]['gender'] . "<br/>";
+            // echo $children[$i]['blood_type'] . "<br/>";
+            // echo $children[$i]['age'] . "<br/>";
+            // echo $children[$i]['birthdate'] . "<br/>";
+            // echo $children[$i]['disease'] . "<br/>";
         }
     }
 }

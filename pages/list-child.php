@@ -14,7 +14,7 @@
 <body class="bg-body-tertiary">
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar navbar-expand-lg bg-body-secondary bg-opacity-25 position-fixed" id="navigation">
+            <nav class="navbar navbar-expand-lg bg-opacity-100 position-fixed" id="navigation">
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="25" height="25" fill="currentColor" class="bi bi-house-heart-fill" viewBox="0 0 16 16">
@@ -40,7 +40,7 @@
             </nav>
         </div>
         <div class="row justify-content-md-center">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="d-flex px-5 bg-body flex-column justify-content-center align-items-center vh-100">
                     <h1 class="mb-4 font-monospace">L I S T O F C H I L D R E N S</h1>
                     <div class="list w-100 h-50 overflow-auto">
@@ -63,7 +63,6 @@
                                     $list = new Functions();
                                     $list -> listChildren();
                                 ?>
-                                
                             </tbody>
                         </table>
                     </div>

@@ -14,7 +14,7 @@
 <body class="bg-body-tertiary">
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar navbar-expand-lg bg-body-secondary bg-opacity-25 position-fixed" id="navigation">
+            <nav class="navbar navbar-expand-lg bg-opacity-100 position-fixed" id="navigation">
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="25" height="25" fill="currentColor" class="bi bi-house-heart-fill" viewBox="0 0 16 16">
@@ -44,7 +44,7 @@
                 <div class="d-flex px-5 bg-body flex-column justify-content-center align-items-center vh-100">
                     <h1 class="mb-3 font-monospace">N E W C H I L D</h1>
                     <div class="form">
-                        <form method="POST">
+                        <form action="../config/Process.php" method="POST">
                             <div class="row mb-4">
                                 <div class="col">
                                     <label for="FirstName" class="form-label">First Name</label>
@@ -93,16 +93,9 @@
                             </div>
                             <div class="row">
                                 <div class="col d-grid">
-                                    <button type="submit" name="submit" class="btn btn-dark py-2 text-uppercase font-monospace">Register New Child</button>
+                                    <button type="submit" name="submitCreateChild" class="btn btn-dark py-2 text-uppercase font-monospace">Register New Child</button>
                                 </div>
                             </div>
-                            <?php
-                            if (isset($_POST['submit'])) {
-                                include_once("../config/Process.php");
-                                $connect = new Functions();
-                                $connect->NewChild();
-                            }
-                            ?>
                         </form>
                     </div>
                 </div>
